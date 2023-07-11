@@ -1,3 +1,5 @@
+import signal
+import sys
 from random import randint
 from time import sleep
 from typing import Dict
@@ -10,6 +12,16 @@ from utils.models import ChargerPayload
 from utils.settings import MQTT_TOPIC_BASE
 
 logger = get_logger("publisher")
+pub_mqtt_client = MqttClientWrapper(client_id="publisher")
+
+
+def keyboard_interrupt_handler(sig, frame):
+    logger.info("Application terminated by keyboard interrupt")
+    logger.info("Disconnecting")
+    pub_mqtt_client.mqtt_client.disconnect()
+    # wait for ack
+    sleep(1)
+    sys.exit(0)
 
 
 def on_publish(client, userdata, result):  # create function for callback
@@ -31,11 +43,12 @@ def generate_session_payload(session_id: int) -> ChargerPayload:
 def main():
     session_id = 1
     latest_timestamp = 0
-    pub_mqtt_client = MqttClientWrapper(client_id="publisher")
+    logger.info("Connecting to mqtt broker")
     pub_mqtt_client.try_connect()
     # wait a few seconds to ensure connection
     sleep(2)
     pub_mqtt_client.mqtt_client.on_publish = on_publish
+    signal.signal(signal.SIGINT, keyboard_interrupt_handler)
     while True:
         try:
             now = pdl.now().utcnow().int_timestamp
