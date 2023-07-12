@@ -4,6 +4,7 @@ from time import sleep
 
 import pendulum as pdl
 
+from listener.db import add_payload_to_db
 from utils.connect import MqttClientWrapper
 from utils.logger import get_logger
 from utils.settings import MQTT_TOPIC_BASE
@@ -40,6 +41,7 @@ def on_message(client, userdata, message):
         f" with QoS {message.qos}"
         f" at timestamp {now}"
     )
+    add_payload_to_db(payload)
 
 
 def main():
