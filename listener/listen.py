@@ -4,7 +4,7 @@ from time import sleep
 
 import pendulum as pdl
 
-from listener.db import add_payload_to_db
+from listener.db import add_payload_to_db, close_connection
 from utils.connect import MqttClientWrapper
 from utils.logger import get_logger
 from utils.settings import MQTT_TOPIC_BASE
@@ -19,6 +19,9 @@ def keyboard_interrupt_handler(sig, frame):
     sub_mqtt_client.mqtt_client.unsubscribe(topic=f"{MQTT_TOPIC_BASE}/#")
     logger.info("Disconnecting")
     sub_mqtt_client.mqtt_client.disconnect()
+    logger.info("Closing database connection")
+    close_connection()
+    logger.info("Disconnected from db")
     # wait for ack
     sleep(1)
     sys.exit(0)

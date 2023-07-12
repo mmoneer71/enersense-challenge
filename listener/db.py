@@ -12,7 +12,7 @@ DB_CONNECTION_STR = f"mongodb+srv://{MONGO_DB_USERNAME}:{MONGO_DB_PASSWORD}@mong
 db_client: MongoClient = MongoClient(DB_CONNECTION_STR)
 db_name = db_client["assignment"]
 collection = db_name["charger_payload"]
-logger = get_logger("listener")
+logger = get_logger("listener_db")
 
 
 def add_payload_to_db(payload: str) -> Optional[DbChargerPayload]:
@@ -25,3 +25,7 @@ def add_payload_to_db(payload: str) -> Optional[DbChargerPayload]:
     except ValidationError:
         logger.error("Failed to parse data, missing keys or corrupt payload")
         return None
+
+
+def close_connection():
+    db_client.close()
