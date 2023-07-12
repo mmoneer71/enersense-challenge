@@ -6,6 +6,7 @@ from api import __version__
 from api.db import close_db_connect, connect_and_init_db
 from api.error import BadRequest, UnprocessableError
 from api.health import health_router
+from api.router import api_router
 from utils.logger import get_logger
 
 app = FastAPI(
@@ -49,3 +50,4 @@ async def unprocessable_error_handler(
 
 # API Path
 app.include_router(health_router, prefix="/health", tags=["health"])
+app.include_router(api_router, prefix="/readings", tags=["readings"])
