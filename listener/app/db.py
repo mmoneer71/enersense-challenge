@@ -27,5 +27,8 @@ def add_payload_to_db(payload: str) -> Optional[DbChargerPayload]:
         return None
 
 
+def __get_payload(session_id: int) -> Optional[DbChargerPayload]:
+    return collection.find_one({"session_id": session_id})
+
 def close_connection():
     db_client.close()
