@@ -46,7 +46,8 @@ def main():
     logger.info("Connecting to mqtt broker")
     pub_mqtt_client.try_connect()
     # wait a few seconds to ensure connection
-    sleep(2)
+    # and also to ensure listener is connected and subscribed
+    sleep(5)
     pub_mqtt_client.mqtt_client.on_publish = on_publish
     signal.signal(signal.SIGINT, keyboard_interrupt_handler)
     while True:

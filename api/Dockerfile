@@ -5,4 +5,4 @@ ADD /utils api/utils
 WORKDIR api/
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-CMD ["uvicorn", "app.networking:app", "--reload"]
+CMD ["uvicorn", "app.networking:app", "--reload", "--host", "0.0.0.0"]
