@@ -2,9 +2,9 @@ from typing import List
 
 from fastapi import APIRouter, Depends
 
-import api.service as service
-from api.db import AsyncIOMotorClient, get_db
-from api.samples import sample_ev_readings
+import app.service as service
+from app.db import AsyncIOMotorClient, get_db
+from app.samples import sample_ev_readings
 from utils.models import ChargerPayload
 
 api_router = APIRouter()

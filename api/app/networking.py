@@ -2,11 +2,11 @@ from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
-from api import __version__
-from api.db import close_db_connect, connect_and_init_db
-from api.error import BadRequest, UnprocessableError
-from api.health import health_router
-from api.router import api_router
+from app import __version__
+from app.db import close_db_connect, connect_and_init_db
+from app.error import BadRequest, UnprocessableError
+from app.health import health_router
+from app.router import api_router
 from utils.logger import get_logger
 
 app = FastAPI(

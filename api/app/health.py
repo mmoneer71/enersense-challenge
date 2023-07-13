@@ -4,7 +4,7 @@ import psutil
 from fastapi import APIRouter, Depends
 from motor.motor_asyncio import AsyncIOMotorClient  # type: ignore
 
-from api.db import get_db
+from app.db import get_db
 
 health_router = APIRouter()
 
