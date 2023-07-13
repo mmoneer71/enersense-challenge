@@ -5,4 +5,5 @@ ADD /utils listener/utils
 WORKDIR listener/
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
+ENV PYTHONPATH "."
 CMD ["python", "app/listen.py"]
