@@ -16,9 +16,11 @@ and activate the virtual env:
 
 `source .venv/bin/activate`
 
-Also the project uses python-dotenv, so it loads environment variables into a Python session by using a .env file. A sample can be found in .env.example, please create a new .env file and copy the values into it. 
+Also the project uses `python-dotenv`, so it loads environment variables into a Python session by using a .env file. A sample can be found in .env.example, please create a new .env file and copy the values into it. 
 
 Understandably, some of these values are secrets and should be managed seperately. They are only placed directly in .env.example for the purpose of running this assignment.
+
+This project uses MongoDb Cloud to set the database remotely and the free public MQTT broker HiveMQ.
 
 ## Run locally
 
@@ -36,21 +38,25 @@ You can find the commands to run each component seperately (from the root direct
 
 `cd publisher/` <br />
 `python -m pip install -r requirements.txt` <br />
-`python app/publish.py`
+`export PYTHONPATH=. && python app/publish.py`
 
 ### Listener
 
 `cd listener/` <br />
 `python -m pip install -r requirements.txt` <br />
-`python app/listen.py` 
+`export PYTHONPATH=. && python app/listen.py`
 
 
 ## Run containers
 
-This project uses Docker compose, so everything is set up. You can run the following commands directly to run all three containers.
+This project uses Docker compose, so everything is set up. You can run the following commands directly from the root directory to run all three containers.
 
 `docker compose build` <br />
 `docker compose up`
+
+This will run all three containers in your terminal. You can add `-d` to the second command to run in detached mode.
+
+The API will be reachable on port 8008 and the Swagger UI can be reached at `http://127.0.0.1:8008/docs`.
 
 ## Notes
 
