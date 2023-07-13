@@ -67,3 +67,5 @@ The API will be reachable on port 8008 and the Swagger UI can be reached at `htt
 - Passwords written as plain text inside the repository are just for demonstration purposes, but would not be the case in a real application.
 
 - The publisher and the listener both connect to the broker without TLS, which is also for the sake of the assignment. Normally certs would have to be created and connection should be done over TLS.
+
+- The database contains one dummy item, which is used only for testing. Normally, a seperate testing database/collection should be set up.
