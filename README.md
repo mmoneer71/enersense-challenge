@@ -31,11 +31,11 @@ Understandably, some of these values are secrets and should be managed seperatel
 
 This project uses MongoDb Cloud to set the database remotely and the free public MQTT broker HiveMQ.
 
-## Run locally
+### Run locally
 
 You can find the commands to run each component seperately (from the root directory). It is recommended to run these commands inside a virtual environment to avoid conflicts. To run all three components, you will need to run each of the following sections in a separate terminal.
 
-### API
+#### API
 
 `cd api/` <br />
 `python -m pip install -r requirements.txt` <br />
@@ -43,20 +43,20 @@ You can find the commands to run each component seperately (from the root direct
 `./start_api.sh`
 
 
-### Publisher
+#### Publisher
 
 `cd publisher/` <br />
 `python -m pip install -r requirements.txt` <br />
 `export PYTHONPATH=. && python app/publish.py`
 
-### Listener
+#### Listener
 
 `cd listener/` <br />
 `python -m pip install -r requirements.txt` <br />
 `export PYTHONPATH=. && python app/listen.py`
 
 
-## Run containers
+### Run containers
 
 This project uses Docker compose, so everything is set up. You can run the following commands directly from the root directory to run all three containers.
 
