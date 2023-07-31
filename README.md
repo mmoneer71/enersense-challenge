@@ -2,6 +2,9 @@
 Solution to the Enersense challenge - Backend Developer
 
 ## Overview
+
+Simple publisher/subscriber application in Python.
+
 This application simulates the whole lifecycle of reading data from an EV charging station via MQTT, stores the received data in a database and serves it via a REST API. It is formed of three main components:
 
 - Publisher: simulates the EV charger itself. Connects to MQTT and publishes a new session every minute to a prespecified topic.
