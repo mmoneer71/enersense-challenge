@@ -2,6 +2,15 @@
 Solution to the Enersense challenge - Backend Developer
 
 ## Overview
+This application simulates the whole lifecycle of reading data from an EV charging station via MQTT, stores the received data in a database and serves it via a REST API. It is formed of three main components:
+
+- Publisher: simulates the EV charger itself. Connects to MQTT and publishes a new session every minute to a prespecified topic.
+- Listener: listens to the same mqtt topic, logs the data received and stores it into a MongoDB database.
+- API: connects to the MongoDB database and serves the data to the user.
+
+Tech stack: Python, FastAPI, Docker/Docker compose, HiveMQ MQTT broker, MongoDb/MongoDb Atlas.
+
+## Running instructions
 The solution has been written and tested with Python version 3.10.6. It has also been linted by `black`, `isort` and `mypy`.
 
 If you want to setup the virtual environment first, please make sure python3.10-venv is installed or install it by running:
