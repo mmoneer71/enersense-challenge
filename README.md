@@ -3,6 +3,8 @@ Solution to the Enersense challenge - Backend Developer
 
 ## Overview
 
+## TODO: add arch diagram, any extremely relevant documents in the overview so we don't dive into a sea of confluence pages
+# nobody really likes that!
 Simple publisher/subscriber application in Python.
 
 This application simulates the whole lifecycle of reading data from an EV charging station via MQTT, stores the received data in a database and serves it via a REST API. It is formed of three main components:
@@ -69,6 +71,9 @@ This project uses Docker compose, so everything is set up. You can run the follo
 This will run all three containers in your terminal. You can add `-d` to the second command to run in detached mode.
 
 The API will be reachable on port 8008 and the Swagger UI can be reached at `http://127.0.0.1:8008/docs`.
+
+## TODO
+Testing, how to run unit tests, any testing relevant confluence pages, info about E2E or further test if relevant
 
 ## Notes
 
