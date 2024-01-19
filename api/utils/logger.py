@@ -1,6 +1,7 @@
 import logging
 
-
+# ditch this and use structlogger -> JSON
+# also get from data-api or UPAPI
 def get_logger(logger_name: str) -> logging.Logger:
     logger = logging.getLogger(logger_name)
     handler = logging.StreamHandler()
