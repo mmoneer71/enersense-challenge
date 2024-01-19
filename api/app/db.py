@@ -3,6 +3,11 @@ from motor.motor_asyncio import AsyncIOMotorClient  # type: ignore
 from utils.logger import get_logger
 from utils.settings import MONGO_DB_PASSWORD, MONGO_DB_USERNAME
 
+# How to make this better?
+# Avoid global variables please!
+# How do we change this into a class, initiate it and pass the handler?
+# Classes >> Functions when there is state
+# Favor context managers over writing code
 db_client: AsyncIOMotorClient = None
 DB_CONNECTION_STR = f"mongodb+srv://{MONGO_DB_USERNAME}:{MONGO_DB_PASSWORD}@mongo-db-es-assignment.7ok8jpt.mongodb.net/"
 
