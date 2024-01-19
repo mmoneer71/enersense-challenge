@@ -1,3 +1,8 @@
+# it is okay to have requirements-dev.txt
+# but not okay to have requirements.txt
+# but please favor changing pyproject.toml instead of requirements-dev
+# if the file gets too big
+
 black==23.7.0
 httpx==0.24.1
 isort==5.12.0
