@@ -23,6 +23,11 @@ api_router = APIRouter()
     },
 )
 async def get_all_readings(
+    # if we change our db.py to a class, we can
+    # do this differently and better/can maintain
+    # sessions/connections easier
+    # perhaps follow the idea behind data-api?
+    # it is already clean and we can just use it
     db: AsyncIOMotorClient = Depends(get_db),
 ) -> List[ChargerPayload]:
     readings = await service.get_all_readings(db)
