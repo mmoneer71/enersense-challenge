@@ -2,6 +2,18 @@ from uuid import UUID
 
 from pydantic import BaseModel
 
+# bad idea for bigger applications
+# please create router/service/model combo whenever contextually appropriate!
+# this file is for main level models YET,
+# please don't create too many many layers either. "Calibrate son :D"
+# also, please name the root level dir something that relates to the project
+# not api, not src, not app, nothing TOO general
+# please ignore MongoModel, it's a piece of crap for the assignment
+# example naming: enersense-challenge for bitbucket name
+# example root dir name: enersense_challenge
+# also api spec generation is missing, must be added might be a good idea to
+# be a pre-commit. Also check if there are unintended changes in
+# pre-commit hooks in UPAPI.
 
 class MongoModel(BaseModel):
     @classmethod
@@ -25,6 +37,8 @@ class MongoModel(BaseModel):
 
         return parsed
 
+# for example, these shouldn't live in the main level models
+# but shitty MongoModel can
 
 class ChargerPayload(BaseModel):
     session_id: int
